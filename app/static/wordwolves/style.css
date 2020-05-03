@@ -1,0 +1,86 @@
+li a {
+    color: white;
+}
+body{
+    background-color: rgb(204, 200, 200);
+    max-width: 600px;
+    max-height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div#pagebody{
+    background-color:white;
+}
+
+div#header{
+    background-color: burlywood;
+    text-align: center;
+}
+.title{
+    font-size: 2em;
+}
+.subtitle{
+    font-size: 1.5em;
+}
+
+div#contents {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: cornsilk;
+    height: auto;
+    width: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    text-align: center;
+}
+div#footer {
+    background-color: cornsilk;
+    height:auto;
+    width:auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+}
+
+/* button */
+div.select_button {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: .5em;
+}
+
+.btn-flat-vertical-border {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-left: solid 4px #668ad8;
+    border-right: solid 4px #668ad8;
+    color: #668ad8;
+    background: #e1f3ff;
+    margin-left: auto;
+    margin-right: auto;
+    /* transition: .4s; */
+  }
+  
+  .btn-flat-vertical-border:hover {
+    background: #668ad8;
+    color: #FFF;
+  }
+
+.btn-sticky {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #f7f7f7;
+    border-left: solid 6px rgba(255, 174, 0, 0.521);/*左線*/
+    color: #ff7c5c;/*文字色*/
+    font-weight: bold;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  }
+  .btn-sticky:active {
+    box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+    transform: translateY(2px);
+  }

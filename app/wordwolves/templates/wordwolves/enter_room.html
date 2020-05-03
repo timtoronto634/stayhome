@@ -1,0 +1,16 @@
+{% extends "wordwolves/base.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    {% if error_message %}
+    {{ error_message }}
+    {% endif %}
+    <form action="{% url 'WW:enter_room' %}" method="POST">
+        {% csrf_token %}
+        Enter Room name
+        <input type="text" name="room_name">
+        <input type="submit" value="submit"/>
+    </form>
+{% endblock content %}

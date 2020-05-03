@@ -1,0 +1,29 @@
+{% extends "wordwolves/base.html" %}
+
+{% block title %}
+
+Game Results
+
+{% endblock %}
+
+{% block content %}
+    {% if status == "waiting" %}
+        waiting for other votes
+        <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="vote" value="{{ vote }}">
+            <input type="submit" value="reload"/>
+        </form>
+    {% elif status == "draw" %}
+        game is draw
+    {% else %}
+        winner: {{ winner }}
+
+        <br>
+
+        {% for player in players %}
+            {{ player.nickname }} : {{ player.item }} <br>
+
+        {% endfor %}
+    {% endif %}
+{% endblock %}

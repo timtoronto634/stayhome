@@ -1,0 +1,14 @@
+{% extends "wordwolves/base.html" %}
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'WW:mypage' room_name nickname %}" method="POST">
+        {% csrf_token %}
+        Hi {{ nickname }}! <br>
+        set temporal pass (less than 4 characters). <br>
+        NOTE: the password is not secured, please use random characters for only temporal use
+        <input type="text" name="plain_pass">
+        <input type="submit" value="submit"/>
+    </form>
+{% endblock content %}

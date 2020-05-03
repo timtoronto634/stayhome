@@ -1,0 +1,22 @@
+{% extends "wordwolves/base.html" %}
+
+{% block title %}create room{% endblock %}
+
+{% block content %}
+    <form action="{% url 'WW:room' %}" method=POST>
+        {% csrf_token %}
+        <p><label for="num_members">number of members: </label>
+        <input type="number" name="num_members"></p>
+        
+        <!-- <p><label for="category">category of theme</label>
+        <input type="text" name="category"></p> -->
+
+        <!-- <p><label for="nickname">your name is</label>
+        <input type="text" name="nickname"></p> -->
+    
+    
+        <p>
+            <input type="submit" value="submit"/>
+        </p>
+    </form>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "wordwolves/base.html" %}
+
+{% block title %}
+Room has been successfully created
+{% endblock %}
+
+{% block content %}
+    <div>
+        Room has been created!
+    </div>
+    <div>
+        Room name is : {{room_name}} <br>
+        let other member know the room name so they can join. <br>
+    </div>
+    <div>
+        <a href="{% url 'WW:entrance' room_name %}" class="btn-flat-vertical-border">go to room</a>
+
+    </div>
+
+{% endblock content %}
