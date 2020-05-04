@@ -28,11 +28,18 @@ services:
         volumes: 
             - static_volume:/home/app/web/static
             - media_volume:/home/app/web/mediafiles
-            - /etc/letsencrypt/live/wordwolves.tareru-factory.tokyo/:/etc/letsencrypt/live/wordwolves.tareru-factory.tokyo/
+            - ./nginx/data/certbot/conf:/etc/letsencrypt
+            - ./nginx/data/certbot/www:/var/www/certbot
         ports: 
-            - 1337:80
+            - 80:80
+            - 443:443
         depends_on: 
             - webp
+    certbot:
+        image: certbot/certbot
+        volumes:
+            - ./nginx/data/certbot/conf:/etc/letsencrypt
+            - ./nginx/data/certbot/www:/var/www/certbot
 volumes: 
     postgres_data:
     static_volume:
