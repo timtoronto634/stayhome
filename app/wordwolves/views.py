@@ -37,28 +37,28 @@ def enter_room(request):
 def fetch_topic():
     # english
     major, minor = random.sample(random.choice([
-            ["apple", "orange", "banana", "strawberry", "melon", "kiwi"], 
-            ["Google", "Facebook", "Netflix", "Amazon"], 
-            ["Waseda", "Keio", "Tokyo University", "Kyoto University", "Harvard University", "Stanford University"],
-            ["shogi", "go (japanese 'igo)", "chess", "Othello"],
-            ["Amazon", "Netflix", "hulu", "abema"], 
-            ["bat", "racket", "ragby ball", "glove"]
-            ]), 2)
+        ["apple", "orange", "banana", "strawberry", "melon", "kiwi"],
+        ["Google", "Facebook", "Netflix", "Amazon"],
+        ["Waseda", "Keio", "Tokyo University", "Kyoto University", "Harvard University", "Stanford University"],
+        ["shogi", "go (japanese 'igo)", "chess", "Othello"],
+        ["Amazon", "Netflix", "hulu", "abema"],
+        ["bat", "racket", "ragby ball", "glove"]
+    ]), 2)
     # japanese
     major, minor = random.sample(random.choice([
-        ["リンゴ","みかん","バナナ","イチゴ","メロン","キウイ","ぶどう","もも","パイナップル"],
-        ["Google", "Facebook", "Netflix", "Amazon", "Youtube"], 
-        ["早稲田","慶応","東京大学","京都大学","ハーバード大学","スタンフォード大学","ケンブリッジ大学"],
-        ["将棋","囲碁","大富豪","チェス","オセロ","モノポリー","人狼","ブラックジャック"],
-        ["Amazon", "Netflix", "hulu", "Abema"], 
-        ["明石家さんま","今田耕司","東野幸治","マツコ・デラックス","安住紳一郎","タモリ","中居正広","上田晋也","有吉弘行"],
-        ["LINE","twitter","instagram","TikTok","Youtube","Facebook"],
-        ["動物園","水族館","映画館","ディズニーシー","ディズニーランド","温泉","遊園地","美術館"],  # デートスポット
-        ["お台場海浜公園","日本科学未来館","大江戸温泉物語","葛西臨海水族園","遊園地よみうりランド",
-        "東京スカイツリー","すみだ水族館","浅草寺","上野動物園"],  # 東京・デートスポット
+        ["リンゴ", "みかん", "バナナ", "イチゴ", "メロン", "キウイ", "ぶどう", "もも", "パイナップル"],
+        ["Google", "Facebook", "Netflix", "Amazon", "Youtube"],
+        ["早稲田", "慶応", "東京大学", "京都大学", "ハーバード大学", "スタンフォード大学", "ケンブリッジ大学"],
+        ["将棋", "囲碁", "大富豪", "チェス", "オセロ", "モノポリー", "人狼", "ブラックジャック"],
+        ["Amazon", "Netflix", "hulu", "Abema"],
+        ["明石家さんま", "今田耕司", "東野幸治", "マツコ・デラックス", "安住紳一郎", "タモリ", "中居正広", "上田晋也", "有吉弘行"],
+        ["LINE", "twitter", "instagram", "TikTok", "Youtube", "Facebook"],
+        ["動物園", "水族館", "映画館", "ディズニーシー", "ディズニーランド", "温泉", "遊園地", "美術館"],  # デートスポット
+        ["お台場海浜公園", "日本科学未来館", "大江戸温泉物語", "葛西臨海水族園", "遊園地よみうりランド",
+         "東京スカイツリー", "すみだ水族館", "浅草寺", "上野動物園"],  # 東京・デートスポット
         # ["","","","","","","","",""],
         # ["","","","","","","","",""],
-        ["1億円貰ったら","10万円貰ったら", "マスク二枚もらったら"]
+        ["1億円貰ったら", "10万円貰ったら", "マスク二枚もらったら"]
     ]), 2)
 
     return major, minor
