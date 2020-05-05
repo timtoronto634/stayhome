@@ -114,3 +114,4 @@ tmp.py
 .env.prod.db
 init-letsencrypt.sh
 nginx/data/certbot/*
+nginx/data/log/*

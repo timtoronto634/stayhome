@@ -28,6 +28,7 @@ services:
         volumes: 
             - static_volume:/home/app/web/static
             - media_volume:/home/app/web/mediafiles
+            - ./nginx/data/log:/var/log/nginx
             - ./nginx/data/certbot/conf:/etc/letsencrypt
             - ./nginx/data/certbot/www:/var/www/certbot
         ports: 
