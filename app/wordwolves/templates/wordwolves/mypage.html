@@ -7,38 +7,48 @@
 
 {% block content %}
 
-<div>
-    Room name: {{ room_name }}
-</div>
-<div>
-    Hello, {{ nickname}}! <br>
-    You are <b>{{ item }}</b>
-</div>
-<div>
-    {% if vote %}
-        your vote is <b>{{ vote }}</b><br>
-        <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
+{% if notready %}
+    waiting for others to join
+        <form action="{% url 'WW:mypage' room_name nickname %}" method="post">
             {% csrf_token %}
-            <input type="hidden" name="vote" value="{{ vote }}">
-            <input type="submit" value="go to result page"/>
+            <input type="hidden" name="plain_pass" value="{{ plain_pass }}">
+            <input type="submit" value="reload"/>
         </form>
-    {% else %}
-        vote to whom you think is the minority side:
-        <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
-            {% csrf_token %}
-            <div>
 
-                <select name="vote">
-                    {% for other_player in others %}
-                    <option value="{{ other_player }}">{{ other_player }}</option> 
-                    {% endfor %}
-                </select>
-            </div>
-            <div>
-                <input type="submit" value="vote">
-            </div>
-        </form>
-    {% endif %}
-</div>
+{% else %}
+    <div>
+        Room name: {{ room_name }}
+    </div>
+    <div>
+        Hello, {{ nickname}}! <br>
+        You are <b>{{ item }}</b>
+    </div>
+    <div>
+        {% if vote %}
+            your vote is <b>{{ vote }}</b><br>
+            <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="vote" value="{{ vote }}">
+                <input type="submit" value="go to result page"/>
+            </form>
+        {% else %}
+            vote to whom you think is the minority side:
+            <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
+                {% csrf_token %}
+                <div>
 
+                    <select name="vote">
+                        {% for other_player in others %}
+                        <option value="{{ other_player }}">{{ other_player }}</option> 
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <input type="submit" value="vote">
+                </div>
+            </form>
+        {% endif %}
+    </div>
+
+{% endif %}
 {% endblock %}

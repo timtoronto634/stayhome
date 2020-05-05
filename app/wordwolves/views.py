@@ -173,6 +173,7 @@ def mypage(request, room_name, nickname):
         else:
             return redirect(reverse("WW:enter_pass", args=(room_name, nickname,)))
     else:
+        # not yet set pass
         if not player_obj.plain_pass:
             input_plain_pass = request.POST["plain_pass"]
             if len(input_plain_pass) >= 4:  # TODO move validation to set pass
@@ -181,10 +182,20 @@ def mypage(request, room_name, nickname):
             else:
                 player_obj.plain_pass = input_plain_pass
                 player_obj.save()
-
+        # wrong password
         elif request.POST["plain_pass"] != player_obj.plain_pass:
             return redirect(reverse("WW:enter_pass", args=(room_name, nickname,)))
+        # pass is ok
         others = [each_player.nickname for each_player in Player.objects.filter(room=room_obj)]
+        # not ready
+        if "not entered" in others:
+            context = {
+                "room_name": room_name,
+                "nickname": nickname,
+                "plain_pass": player_obj.plain_pass,
+                "notready": True,
+            }
+            return render(request, "wordwolves/mypage.html", context)
         others.remove(player_obj.nickname)
         vote = player_obj.vote
         context = {
