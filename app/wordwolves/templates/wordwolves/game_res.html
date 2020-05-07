@@ -14,11 +14,13 @@ Game Results
             <input type="hidden" name="vote" value="{{ vote }}">
             <input type="submit" value="reload"/>
         </form>
-    {% elif status == "draw" %}
-        game is draw
     {% else %}
-        winner: {{ winner }}
-
+        {% if status == "draw" %}
+            game is draw
+        {% else %}
+            winner: <h1><b>{{ winner }}</b></h1>
+        {% endif %}
+        
         <br>
 
         {% for player in players %}
