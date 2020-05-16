@@ -1,6 +1,5 @@
 from collections import Counter
 import random
-import string
 
 
 from django.shortcuts import render, redirect
@@ -48,16 +47,17 @@ def fetch_topic():
     major, minor = random.sample(random.choice([
         ["リンゴ", "みかん", "バナナ", "イチゴ", "メロン", "キウイ", "ぶどう", "もも", "パイナップル"],
         ["Google", "Facebook", "Netflix", "Amazon", "Youtube"],
-        ["早稲田", "慶応", "東京大学", "京都大学", "ハーバード大学", "スタンフォード大学", "ケンブリッジ大学"],
+        ["早稲田大学", "慶応大学", "東京大学", "京都大学", "ハーバード大学", "スタンフォード大学", "ケンブリッジ大学"],
         ["将棋", "囲碁", "大富豪", "チェス", "オセロ", "モノポリー", "人狼", "ブラックジャック"],
         ["Amazon", "Netflix", "hulu", "Abema"],
         ["明石家さんま", "今田耕司", "東野幸治", "マツコ・デラックス", "安住紳一郎", "タモリ", "中居正広", "上田晋也", "有吉弘行"],
         ["LINE", "twitter", "instagram", "TikTok", "Youtube", "Facebook"],
+        ["カラオケ", "ボーリング", "ダーツ", "卓球"],  # 遊び
+        ["顔がタイプ", "年収が高い", "性格の一致", "自分にないものを持っている", "体型", "IQが近い", "声が好み"],  # 異性に求める条件
         ["動物園", "水族館", "映画館", "ディズニーシー", "ディズニーランド", "温泉", "遊園地", "美術館"],  # デートスポット
-        ["お台場海浜公園", "日本科学未来館", "大江戸温泉物語", "葛西臨海水族園", "遊園地よみうりランド",
+        ["お台場海浜公園", "日本科学未来館", "大江戸温泉物語", "遊園地よみうりランド",
          "東京スカイツリー", "すみだ水族館", "浅草寺", "上野動物園"],  # 東京・デートスポット
-        # ["","","","","","","","",""],
-        # ["","","","","","","","",""],
+        ["面接", "合コン"],  # 遊び
         ["1億円貰ったら", "10万円貰ったら", "マスク二枚もらったら"]
     ]), 2)
 
@@ -133,7 +133,8 @@ def entrance(request, room_name):
                 context["nickname"] = player_obj.nickname
                 return render(request, "wordwolves/set_pass.html", context)
     # if get or others: let type name
-    return render(request, 'wordwolves/enter_name.html', context)
+    else:
+        return render(request, 'wordwolves/enter_name.html', context)
 
 
 def set_pass(request, room_name, nickname):
@@ -190,26 +191,26 @@ def mypage(request, room_name, nickname):
         else:
             # password is ok
             pass
-        others = [each_player.nickname for each_player in Player.objects.filter(room=room_obj)]
-        # not ready
-        if "not entered" in others:
-            context = {
-                "room_name": room_name,
-                "nickname": nickname,
-                "plain_pass": player_obj.plain_pass,
-                "notready": True,
-            }
-            return render(request, "wordwolves/mypage.html", context)
-        others.remove(player_obj.nickname)
-        vote = player_obj.vote
+    others = [each_player.nickname for each_player in Player.objects.filter(room=room_obj)]
+    # not ready
+    if "not entered" in others:
         context = {
             "room_name": room_name,
             "nickname": nickname,
-            "item": player_obj.item,
-            "vote": vote,
-            "others": others,
+            "plain_pass": player_obj.plain_pass,
+            "notready": True,
         }
         return render(request, "wordwolves/mypage.html", context)
+    others.remove(player_obj.nickname)
+    vote = player_obj.vote
+    context = {
+        "room_name": room_name,
+        "nickname": nickname,
+        "item": player_obj.item,
+        "vote": vote,
+        "others": others,
+    }
+    return render(request, "wordwolves/mypage.html", context)
 
 
 @require_POST
@@ -277,7 +278,10 @@ def replay(request, room_name, nickname):
     elif any(votes):
         num_members = room_obj.num_players
         num_majors = num_members - (num_members // 3)
+        # set new topic
         major, minor = fetch_topic()
+        while room_obj.major in [major, minor] or room_obj.minor in [major, minor]:
+            major, minor = fetch_topic()
         # update room
         room_obj.major = major
         room_obj.minor = minor
