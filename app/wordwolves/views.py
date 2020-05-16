@@ -68,7 +68,7 @@ def fetch_topic():
 def room(request):
     room_name = generate_room_name()
     num_members = int(request.POST.get("num_members"))  # TODO validation for num_members
-    num_majors = num_members // 2 + 1
+    num_majors = num_members - (num_members // 3)
     # category = request.POST.get("category")
     # player_nickname = request.POST["nickname"]
     category = "dummy_category"
@@ -167,7 +167,9 @@ def enter_pass(request, room_name, nickname):
 def mypage(request, room_name, nickname):
     room_obj = Room.objects.get(room_name=room_name)
     player_obj = Player.objects.get(room=room_obj, nickname=nickname)
-    if request.method == "GET":
+    if request.method == "GET" and player_obj.replay == True:
+        pass  # go to mypage
+    elif request.method == "GET":
         if not player_obj.plain_pass:
             return redirect(reverse("WW:set_pass", args=(room_name, nickname,)))
         else:
@@ -185,7 +187,9 @@ def mypage(request, room_name, nickname):
         # wrong password
         elif request.POST["plain_pass"] != player_obj.plain_pass:
             return redirect(reverse("WW:enter_pass", args=(room_name, nickname,)))
-        # pass is ok
+        else:
+            # password is ok
+            pass
         others = [each_player.nickname for each_player in Player.objects.filter(room=room_obj)]
         # not ready
         if "not entered" in others:
@@ -214,6 +218,7 @@ def game_res(request, room_name, nickname):
     vote = request.POST["vote"]
     player = Player.objects.get(room=room_obj, nickname=nickname)
     player.vote = vote
+    player.replay = False
     player.save()
 
     all_players = Player.objects.filter(room=room_obj)
@@ -250,4 +255,45 @@ def game_res(request, room_name, nickname):
         else:  # same vote
             context["status"] = "draw"
     return render(request, "wordwolves/game_res.html", context)
+
+def replay(request, room_name, nickname):
+    room_obj = Room.objects.get(room_name=room_name)
+    player = Player.objects.get(room=room_obj, nickname=nickname)
+    
+    player.replay = True
+    player.save()
+    all_players = Player.objects.filter(room=room_obj)
+    replay_flags = [each_player.replay for each_player in all_players]
+    votes = [each_player.vote for each_player in all_players]
+    # check if everyone join the new game
+    if not all(replay_flags) and any(votes):
+        context = {
+            "room_name": room_name,
+            "nickname": nickname,
+        }
+        return render(request, "wordwolves/replay.html", context)
+
+    # clear votes, set new topic. only once.
+    elif any(votes):
+        num_members = room_obj.num_players
+        num_majors = num_members - (num_members // 3)
+        major, minor = fetch_topic()
+        # update room
+        room_obj.major = major
+        room_obj.minor = minor
+        room_obj.save()
+        # player
+        items = [major] * num_majors + [minor] * (num_members - num_majors)
+        random.shuffle(items)
+        for i, each_player in enumerate(all_players):
+            each_player.vote = None
+            # new topic
+            each_player.item = items[i]
+            each_player.majority = items[i] == major
+            each_player.save()
+        return redirect(reverse("WW:mypage", args=(room_name, nickname,)))
+    else:
+        return redirect(reverse("WW:mypage", args=(room_name, nickname,)))
+
+
 # empty line needed

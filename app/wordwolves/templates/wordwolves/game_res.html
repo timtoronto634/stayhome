@@ -27,5 +27,10 @@ Game Results
             {{ player.nickname }} : {{ player.item }} <br>
 
         {% endfor %}
+
+        <br>
+        <div class="select_button">
+            <a href="{% url 'WW:replay' room_name nickname %}" class="btn-flat-vertical-border">another game with same members</a>
+        </div>
     {% endif %}
 {% endblock %}

@@ -15,5 +15,6 @@ urlpatterns = [
     path("room/<str:room_name>/<str:nickname>/mypage/", views.mypage, name="mypage"),
     # path("room/<str:room_name>/<str:nickname>/game", views.game, name="game"),
     path("room/<str:room_name>/<str:nickname>/game_res", views.game_res, name="game_res"),
+    path("room/<str:room_name>/<str:nickname>/replay", views.replay, name="replay"),
 ]
 # empty line needed

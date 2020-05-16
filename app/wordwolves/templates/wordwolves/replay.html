@@ -1,0 +1,14 @@
+{% extends "wordwolves/base.html" %}
+
+{% block title %}
+
+New game...
+
+{% endblock %}
+
+{% block content %}
+    waiting for other player to join
+    <div class="select_button">
+        <a href="{% url 'WW:replay' room_name nickname %}" class="btn-flat-vertical-border">reload</a>
+    </div>
+{% endblock %}

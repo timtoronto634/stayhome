@@ -21,6 +21,7 @@ class Player(models.Model):
     majority = models.BooleanField()
     plain_pass = models.CharField(null=True, max_length=5)
     vote = models.CharField(max_length=20, null=True)
+    replay = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nickname
