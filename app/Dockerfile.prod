@@ -2,7 +2,7 @@
 # builder #
 ###########
 
-FROM python:3.8.2-alpine as builder
+FROM python:3.8.3-alpine as builder
 
 WORKDIR /usr/src/app
 
