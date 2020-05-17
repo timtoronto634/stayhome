@@ -20,7 +20,7 @@
             <div class="subtitle">
                 {% block subtitle %}
                 {% if room_name %}
-                    Room Name : {{ room_name }}
+                    {% trans "Room name" %} : {{ room_name }}
                 {% endif %}
                 {% endblock %}
             </div>
@@ -29,7 +29,7 @@
             {% block content %}{% endblock %}
         </div>
         <div id="footer">
-            <a href="{% url 'WW:top' %}" class="btn-sticky">Back to Top</a>
+            <a href="{% url 'WW:top' %}" class="btn-sticky">{% trans "Back to Top" %}</a>
         </div>
     </div>
 </body>
