@@ -1,19 +1,21 @@
 {% extends "wordwolves/base.html" %}
+{% load i18n %}
 
 {% block title %}
 WordWolves
 {% endblock %}
 
 {% block subtitle %}
-for online party
+
+{% trans "for online party" %}
 {% endblock %}
 
 {% block content %}
 
     <div class="select_button">
-        <a href="{% url 'WW:create_room' %}" class="btn-flat-vertical-border">create room</a>
+        <a href="{% url 'WW:create_room' %}" class="btn-flat-vertical-border">{% trans "create room" %}</a>
     </div>
     <div class="select_button">
-        <a href="{% url 'WW:enter_room' %}" class="btn-flat-vertical-border">enter room</a>
+        <a href="{% url 'WW:enter_room' %}" class="btn-flat-vertical-border">{% trans "enter room" %}</a>
     </div>
     {% endblock content %}
