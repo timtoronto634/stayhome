@@ -257,6 +257,7 @@ def game_res(request, room_name, nickname):
             context["status"] = "draw"
     return render(request, "wordwolves/game_res.html", context)
 
+
 def replay(request, room_name, nickname):
     room_obj = Room.objects.get(room_name=room_name)
     player = Player.objects.get(room=room_obj, nickname=nickname)
