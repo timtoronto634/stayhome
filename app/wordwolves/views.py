@@ -168,13 +168,13 @@ def enter_pass(request, room_name, nickname):
 def mypage(request, room_name, nickname):
     room_obj = Room.objects.get(room_name=room_name)
     player_obj = Player.objects.get(room=room_obj, nickname=nickname)
-    if request.method == "GET" and player_obj.replay == True:
+    if request.method == "GET" and player_obj.replay is True:
         pass  # go to mypage
     elif request.method == "GET":
-        if not player_obj.plain_pass:
-            return redirect(reverse("WW:set_pass", args=(room_name, nickname,)))
-        else:
+        if player_obj.plain_pass:
             return redirect(reverse("WW:enter_pass", args=(room_name, nickname,)))
+        else:
+            return redirect(reverse("WW:set_pass", args=(room_name, nickname,)))
     else:
         # not yet set pass
         if not player_obj.plain_pass:
@@ -261,7 +261,7 @@ def game_res(request, room_name, nickname):
 def replay(request, room_name, nickname):
     room_obj = Room.objects.get(room_name=room_name)
     player = Player.objects.get(room=room_obj, nickname=nickname)
-    
+
     player.replay = True
     player.save()
     all_players = Player.objects.filter(room=room_obj)

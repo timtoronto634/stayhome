@@ -1,14 +1,15 @@
 {% extends "wordwolves/base.html" %}
+{% load i18n %}
 
 {% block title %}
 
-New game...
+{% trans 'New game...' %}
 
 {% endblock %}
 
 {% block content %}
-    waiting for other player to join
+    {% trans 'waiting for others to join' %}
     <div class="select_button">
-        <a href="{% url 'WW:replay' room_name nickname %}" class="btn-flat-vertical-border">reload</a>
+        <a href="{% url 'WW:replay' room_name nickname %}" class="btn-flat-vertical-border">{% trans 'reload' %}</a>
     </div>
 {% endblock %}

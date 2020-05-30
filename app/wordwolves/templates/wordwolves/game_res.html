@@ -1,28 +1,28 @@
 {% extends "wordwolves/base.html" %}
+{% load i18n %}
 
 {% block title %}
-
-Game Results
+{% trans "Game Results" %}
 
 {% endblock %}
 
 {% block content %}
     {% if status == "waiting" %}
-        waiting for other votes
+    {% trans 'waiting for other votes' %}
         <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="vote" value="{{ vote }}">
-            <input type="submit" value="reload"/>
+            <input type="submit" value="{% trans 'reload' %}"/>
         </form>
     {% else %}
         {% if status == "draw" %}
-            game is draw
+            {% trans 'game is draw' %}
         {% else %}
-            winner: <h1><b>{{ winner }}</b></h1>
+            {% trans 'winner:' %} <h1><b>{{ winner }}</b></h1>
         {% endif %}
         
         <br>
-
+        {% trans "whoswho" %}
         {% for player in players %}
             {{ player.nickname }} : {{ player.item }} <br>
 
@@ -30,7 +30,7 @@ Game Results
 
         <br>
         <div class="select_button">
-            <a href="{% url 'WW:replay' room_name nickname %}" class="btn-flat-vertical-border">another game with same members</a>
+            <a href="{% url 'WW:replay' room_name nickname %}" class="btn-flat-vertical-border">{% trans 'another game with same members' %}</a>
         </div>
     {% endif %}
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends "wordwolves/base.html" %}
+{% load i18n %}
 
 {% block title %}
  {% if room_name %}{{nickname}}{% endif %}
@@ -8,31 +9,31 @@
 {% block content %}
 
 {% if notready %}
-    waiting for others to join
+    {% trans 'waiting for others to join' %}
         <form action="{% url 'WW:mypage' room_name nickname %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="plain_pass" value="{{ plain_pass }}">
-            <input type="submit" value="reload"/>
+            <input type="submit" value="{% trans 'reload' %}"/>
         </form>
 
 {% else %}
     <div>
-        Room name: {{ room_name }}
+        {% trans 'Room name' %}: {{ room_name }}
     </div>
     <div>
-        Hello, {{ nickname}}! <br>
-        You are <b>{{ item }}</b>
+        {% trans 'Hello,' %} {{ nickname}}! <br>
+        {% trans 'You are' %} <b>{{ item }}</b>
     </div>
     <div>
         {% if vote %}
-            your vote is <b>{{ vote }}</b><br>
+            {% trans 'your vote is' %} <b>{{ vote }}</b><br>
             <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="vote" value="{{ vote }}">
-                <input type="submit" value="go to result page"/>
+                <input type="submit" value="{% trans 'go to result page' %}"/>
             </form>
         {% else %}
-            vote to whom you think is the minority side:
+            {% trans 'vote to whom you think is the minority side:' %}
             <form action="{% url 'WW:game_res' room_name nickname %}" method="post">
                 {% csrf_token %}
                 <div>
@@ -44,7 +45,7 @@
                     </select>
                 </div>
                 <div>
-                    <input type="submit" value="vote">
+                    <input type="submit" value="{% trans 'vote' %}">
                 </div>
             </form>
         {% endif %}

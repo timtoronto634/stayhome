@@ -1,6 +1,8 @@
 {% extends "wordwolves/base.html" %}
+{% load i18n %}
 
 {% block title %}
+{% trans "enter room" %}
 {% endblock %}
 
 {% block content %}
@@ -9,8 +11,8 @@
     {% endif %}
     <form action="{% url 'WW:enter_room' %}" method="POST">
         {% csrf_token %}
-        Enter Room name
+        {% trans 'Room name' %}
         <input type="text" name="room_name">
-        <input type="submit" value="submit"/>
+        <input type="submit" value="{% trans 'confirm' %}"/>
     </form>
 {% endblock content %}

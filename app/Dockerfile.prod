@@ -2,14 +2,14 @@
 # builder #
 ###########
 
-FROM python:3.8.2-alpine as builder
+FROM python:3.8.3-alpine as builder
 
 WORKDIR /usr/src/app
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev 
 
 RUN pip install --upgrade pip
 RUN pip install flake8
@@ -36,7 +36,7 @@ ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 WORKDIR $APP_HOME
 
-RUN apk update && apk add libpq
+RUN apk update && apk add libpq gettext
 COPY --from=builder /usr/src/app/wheels /wheels
 COPY --from=builder /usr/src/app/requirements.txt .
 

@@ -1,19 +1,20 @@
 {% extends "wordwolves/base.html" %}
+{% load i18n %}
 
 {% block title %}
-Room has been successfully created
+{% trans 'Room has been successfully created' %}
 {% endblock %}
 
 {% block content %}
     <div>
-        Room has been created!
+        {% trans 'Room has been created!' %}
     </div>
     <div>
-        Room name is : {{room_name}} <br>
-        let other member know the room name so they can join. <br>
+        {% trans 'Room name' %}: {{room_name}} <br>
+        {% trans 'let other member know the room name so they can join.' %} <br>
     </div>
     <div>
-        <a href="{% url 'WW:entrance' room_name %}" class="btn-flat-vertical-border">go to room</a>
+        <a href="{% url 'WW:entrance' room_name %}" class="btn-flat-vertical-border">{% trans 'go to room' %}</a>
 
     </div>
 

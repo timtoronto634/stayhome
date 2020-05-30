@@ -1,4 +1,5 @@
 {% extends "wordwolves/base.html" %}
+{% load i18n %}
 
 {% block title %}
 {% endblock %}
@@ -10,10 +11,10 @@
 
     <form action="{% url 'WW:entrance' room_name %}" method="POST">
         {% csrf_token %}
-        Welcome to Room: {{ room_name }}! <br>
-        If you are new, enter your name <br>
+        {% trans 'Welcome to Room:' %} {{ room_name }} <br>
+        {% trans 'If you are new, enter your name' %} <br>
         <input type="text" name="nickname">
-        <input type="submit" value="submit"/>
+        <input type="submit" value="{% trans 'confirm' %}"/>
     </form>
     <br>
     <br>
@@ -21,9 +22,9 @@
     <br>
     <form action="{% url 'WW:entrance' room_name %}" method="POST">
         {% csrf_token %}
-        <label for="already_entered">Have you already entered the room? click</label>
+        <label for="already_entered">{% trans 'Have you already entered the room? click' %}</label>
         <input type="hidden" name="already_entered" value="already_entered">
-        <input type="submit" value="here"/>
+        <input type="submit" value="{% trans 'here' %}"/>
 
     </form>
 {% endblock content %}

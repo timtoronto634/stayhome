@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-17 07:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: wordwolves/templates/wordwolves/base.html:23
+#: wordwolves/templates/wordwolves/enter_room.html:14
+#: wordwolves/templates/wordwolves/mypage.html:21
+#: wordwolves/templates/wordwolves/notice.html:13
+msgid "Room name"
+msgstr "グループ名"
+
+#: wordwolves/templates/wordwolves/base.html:32
+msgid "Back to Top"
+msgstr "トップに戻る"
+
+#: wordwolves/templates/wordwolves/create_room.html:4
+#: wordwolves/templates/wordwolves/top.html:16
+msgid "create room"
+msgstr "グループを作る"
+
+#: wordwolves/templates/wordwolves/create_room.html:9
+msgid "number of members: "
+msgstr "グループの人数を教えてください"
+
+#: wordwolves/templates/wordwolves/create_room.html:20
+#: wordwolves/templates/wordwolves/enter_name.html:17
+#: wordwolves/templates/wordwolves/enter_pass.html:15
+#: wordwolves/templates/wordwolves/enter_room.html:16
+#: wordwolves/templates/wordwolves/set_pass.html:13
+msgid "confirm"
+msgstr "決定"
+
+#: wordwolves/templates/wordwolves/enter_name.html:14
+msgid "Welcome to Room:"
+msgstr "グループ名："
+
+#: wordwolves/templates/wordwolves/enter_name.html:15
+msgid "If you are new, enter your name"
+msgstr "はじめまして、他のメンバーにわかる名前を入れてください"
+
+#: wordwolves/templates/wordwolves/enter_name.html:25
+msgid "Have you already entered the room? click"
+msgstr "すでに登録済みであれば、こちらから自分の名前を選んでください"
+
+#: wordwolves/templates/wordwolves/enter_name.html:27
+msgid "here"
+msgstr "名前を選ぶ"
+
+#: wordwolves/templates/wordwolves/enter_pass.html:5
+msgid "temporal lock"
+msgstr "パスワード入力"
+
+#: wordwolves/templates/wordwolves/enter_pass.html:11
+#: wordwolves/templates/wordwolves/set_pass.html:9
+msgid "Hi"
+msgstr "こんにちは！"
+
+#: wordwolves/templates/wordwolves/enter_pass.html:12
+msgid "enter your temporal pass "
+msgstr "設定したパスワードを入力してください"
+
+#: wordwolves/templates/wordwolves/enter_pass.html:13
+msgid "(less than 4 characters)."
+msgstr "4文字以内でテキトーに設定してください"
+
+#: wordwolves/templates/wordwolves/enter_room.html:5
+#: wordwolves/templates/wordwolves/top.html:19
+msgid "enter room"
+msgstr "グループに参加"
+
+#: wordwolves/templates/wordwolves/game_res.html:5
+msgid "Game Results"
+msgstr "結果発表"
+
+#: wordwolves/templates/wordwolves/game_res.html:11
+msgid "waiting for other votes"
+msgstr "他のメンバーの投票を待っています"
+
+#: wordwolves/templates/wordwolves/game_res.html:15
+#: wordwolves/templates/wordwolves/mypage.html:16
+#: wordwolves/templates/wordwolves/replay.html:13
+msgid "reload"
+msgstr "更新"
+
+#: wordwolves/templates/wordwolves/game_res.html:19
+msgid "game is draw"
+msgstr "引き分け"
+
+#: wordwolves/templates/wordwolves/game_res.html:21
+msgid "winner:"
+msgstr "勝ったのは"
+
+#: wordwolves/templates/wordwolves/game_res.html:25
+msgid "whoswho"
+msgstr "タネ明かし"
+
+#: wordwolves/templates/wordwolves/game_res.html:33
+msgid "another game with same members"
+msgstr "このメンバーでもう一回遊ぶ"
+
+#: wordwolves/templates/wordwolves/mypage.html:12
+#: wordwolves/templates/wordwolves/replay.html:11
+msgid "waiting for others to join"
+msgstr "他のメンバーの参加を待っています"
+
+#: wordwolves/templates/wordwolves/mypage.html:24
+msgid "Hello,"
+msgstr "こんちには！"
+
+#: wordwolves/templates/wordwolves/mypage.html:25
+msgid "You are"
+msgstr "あなたのお題は"
+
+#: wordwolves/templates/wordwolves/mypage.html:29
+msgid "your vote is"
+msgstr "あなたの投票は"
+
+#: wordwolves/templates/wordwolves/mypage.html:33
+msgid "go to result page"
+msgstr "結果を見る"
+
+#: wordwolves/templates/wordwolves/mypage.html:36
+msgid "vote to whom you think is the minority side:"
+msgstr "少数派だと思う人に投票してください"
+
+#: wordwolves/templates/wordwolves/mypage.html:48
+msgid "vote"
+msgstr "投票"
+
+#: wordwolves/templates/wordwolves/notice.html:5
+msgid "Room has been successfully created"
+msgstr "グループが作成されました"
+
+#: wordwolves/templates/wordwolves/notice.html:10
+msgid "Room has been created!"
+msgstr "グループが作成されました"
+
+#: wordwolves/templates/wordwolves/notice.html:14
+msgid "let other member know the room name so they can join."
+msgstr "他のメンバーにグループ名を伝えてください"
+
+#: wordwolves/templates/wordwolves/notice.html:17
+msgid "go to room"
+msgstr "グループに参加"
+
+#: wordwolves/templates/wordwolves/replay.html:6
+msgid "New game..."
+msgstr "もう一回"
+
+#: wordwolves/templates/wordwolves/room.html:6
+msgid "choose your name"
+msgstr "ログイン"
+
+#: wordwolves/templates/wordwolves/room.html:12
+msgid "choose yourself"
+msgstr "自分の名前を選択"
+
+#: wordwolves/templates/wordwolves/set_pass.html:10
+msgid "set temporal pass (less than 4 characters). "
+msgstr ""
+"他のプレイヤーがお題を見れないように、4文字以内でテキトーなパスワードを設定し"
+"てください。"
+
+#: wordwolves/templates/wordwolves/set_pass.html:11
+msgid ""
+"NOTE: the password is not secured, please use random characters for only "
+"temporal use"
+msgstr "（安全ではないので、他で使っているものは絶対に使用しないでください）"
+
+#: wordwolves/templates/wordwolves/top.html:5
+msgid "WordWolves"
+msgstr "ワードウルフ"
+
+#: wordwolves/templates/wordwolves/top.html:10
+msgid "for online party"
+msgstr "オンライン飲み会用"
