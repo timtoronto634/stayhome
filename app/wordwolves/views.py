@@ -122,6 +122,8 @@ def entrance(request, room_name):
         if player_nickname in ["not entered", ""]:  # TODO check duplicate name
             error_messages = {"not entered": "please use other name", "": "please enter name"}
             context["error_message"] = error_messages[player_nickname]
+        elif len(Player.objects.filter(room=room_obj, nickname=player_nickname)) == 1:
+            context["error_message"] = "member with same name already exists"
         else:
             player_objs = Player.objects.filter(room=room_obj, nickname="not entered")
             if len(player_objs) == 0:
@@ -133,8 +135,7 @@ def entrance(request, room_name):
                 context["nickname"] = player_obj.nickname
                 return render(request, "wordwolves/set_pass.html", context)
     # if get or others: let type name
-    else:
-        return render(request, 'wordwolves/enter_name.html', context)
+    return render(request, 'wordwolves/enter_name.html', context)
 
 
 def set_pass(request, room_name, nickname):
