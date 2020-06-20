@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-17 07:21+0000\n"
+"POT-Creation-Date: 2020-06-20 08:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,9 +108,14 @@ msgstr "勝ったのは"
 
 #: wordwolves/templates/wordwolves/game_res.html:25
 msgid "whoswho"
-msgstr "タネ明かし"
+msgstr "皆さんのお題"
 
 #: wordwolves/templates/wordwolves/game_res.html:33
+#: wordwolves/templates/wordwolves/mypage.html:48
+msgid "vote"
+msgstr "開票"
+
+#: wordwolves/templates/wordwolves/game_res.html:40
 msgid "another game with same members"
 msgstr "このメンバーでもう一回遊ぶ"
 
@@ -138,10 +143,6 @@ msgstr "結果を見る"
 #: wordwolves/templates/wordwolves/mypage.html:36
 msgid "vote to whom you think is the minority side:"
 msgstr "少数派だと思う人に投票してください"
-
-#: wordwolves/templates/wordwolves/mypage.html:48
-msgid "vote"
-msgstr "投票"
 
 #: wordwolves/templates/wordwolves/notice.html:5
 msgid "Room has been successfully created"
