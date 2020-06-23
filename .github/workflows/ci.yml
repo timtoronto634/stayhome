@@ -1,0 +1,49 @@
+name: Run mix test and yarn test
+on:
+  push:
+    branches-ignore:
+      - master
+jobs:
+  format_check_and_test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    services:
+      db:
+        image: postgres:12.2-alpine
+        env:
+          POSTGRES_USER: chiba_psql
+          POSTGRES_PASSWORD: SHwwuchida
+          POSTGRES_DB: stayhome_postgres
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: Install packages
+        run: sudo apt-get update && sudo apt-get install gcc musl-dev gettext
+
+      - name: Cache pip
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('app/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Lint with flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      # 現在はtestが書かれていないので、追加されたらここのコメントアウトを外すとテストが走るようになる
+      # - name: Test with pytest
+      #   run: |
+      #     pytest
