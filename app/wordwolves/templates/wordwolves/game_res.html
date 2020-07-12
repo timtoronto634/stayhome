@@ -22,12 +22,19 @@
         {% endif %}
         
         <br>
-        {% trans "whoswho" %}
+        <h3>{% trans "whoswho" %}</h3>
+        <br>
         {% for player in players %}
             {{ player.nickname }} : {{ player.item }} <br>
 
         {% endfor %}
 
+        <br>
+        <h3>{% trans "vote" %}</h3>
+        <br>
+        {% for player in players %}
+            {{ player.nickname }} -> {{ player.vote }} <br>
+        {% endfor %}
         <br>
         <div class="select_button">
             <a href="{% url 'WW:replay' room_name nickname %}" class="btn-flat-vertical-border">{% trans 'another game with same members' %}</a>
