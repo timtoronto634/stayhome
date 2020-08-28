@@ -8,9 +8,6 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
-div#pagebody{
-    background-color:white;
-}
 
 div#header{
     background-color: burlywood;

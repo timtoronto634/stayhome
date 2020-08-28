@@ -3,33 +3,40 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'wordwolves/style.css' %}">
     <title>{% if request.path != '/' %}{% endif %}WordWolves</title>
 </head>
 <body>
     {% load i18n %}
-    <div id="pagebody">
-        <div id="header">
-            <div class="title">
-                {% block title %}
-                header
-                {% endblock %}
+    <div class="vh-100">
+        <div class="col-xs-11 col-sm-11 col-md-8 col-lg-5">
+            <div id="header">
+                <div class="title">
+                    {% block title %}
+                    header
+                    {% endblock %}
+                </div>
+                <div class="subtitle">
+                    {% block subtitle %}
+                    {% if room_name %}
+                        {% trans "Room name" %} : {{ room_name }}
+                    {% endif %}
+                    {% endblock %}
+                </div>
             </div>
-            <div class="subtitle">
-                {% block subtitle %}
-                {% if room_name %}
-                    {% trans "Room name" %} : {{ room_name }}
-                {% endif %}
-                {% endblock %}
+            <div id="contents">
+                {% block content %}{% endblock %}
             </div>
-        </div>
-        <div id="contents">
-            {% block content %}{% endblock %}
-        </div>
-        <div id="footer">
-            <a href="{% url 'WW:top' %}" class="btn-sticky">{% trans "Back to Top" %}</a>
+            <div id="footer">
+                <a href="{% url 'WW:top' %}" class="btn-sticky">{% trans "Back to Top" %}</a>
+            </div>
         </div>
     </div>
 </body>
